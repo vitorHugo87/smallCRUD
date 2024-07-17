@@ -6,7 +6,7 @@ public class Activity {
 
 	private Integer id;
 	private String name;
-	private Integer classId;
+	private Integer classeId;
 	
 	public Activity() {
 	}
@@ -14,7 +14,7 @@ public class Activity {
 	public Activity(Integer id, String name, Integer classId) {
 		this.id = id;
 		this.name = name;
-		this.classId = classId;
+		this.classeId = classId;
 	}
 
 	public Integer getId() {
@@ -34,11 +34,11 @@ public class Activity {
 	}
 
 	public Integer getClassId() {
-		return classId;
+		return classeId;
 	}
 
 	public void setClassId(Integer classId) {
-		this.classId = classId;
+		this.classeId = classId;
 	}
 
 	@Override
@@ -60,6 +60,6 @@ public class Activity {
 
 	@Override
 	public String toString() {
-		return "Activity [id=" + id + ", name=" + name + ", classId=" + classId + "]";
+		return "Activity [id=" + id + ", name=" + name + ", classId=" + classeId + "]";
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Class {
+public class Classe {
 
 	private Integer id;
 	private String name;
@@ -13,10 +13,10 @@ public class Class {
 	
 	List<Activity> activities = new ArrayList<>();
 	
-	public Class() {
+	public Classe() {
 	}
 
-	public Class(Integer id, String name, Integer teacherId, List<Activity> activities) {
+	public Classe(Integer id, String name, Integer teacherId, List<Activity> activities) {
 		this.id = id;
 		this.name = name;
 		this.teacherId = teacherId;
@@ -68,7 +68,7 @@ public class Class {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Class other = (Class) obj;
+		Classe other = (Classe) obj;
 		return Objects.equals(id, other.id);
 	}
 

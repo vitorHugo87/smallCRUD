@@ -10,12 +10,12 @@ public class Teacher {
 	private String password;
 	private String email;
 	
-	List<Class> classes = new ArrayList<>();
+	List<Classe> classes = new ArrayList<>();
 	
 	public Teacher() {
 	}
 
-	public Teacher(Integer id, String username, String password, String email, List<Class> classes) {
+	public Teacher(Integer id, String username, String password, String email, List<Classe> classes) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
@@ -55,11 +55,11 @@ public class Teacher {
 		this.email = email;
 	}
 
-	public List<Class> getClasses() {
+	public List<Classe> getClasses() {
 		return classes;
 	}
 
-	public void setClasses(List<Class> classes) {
+	public void setClasses(List<Classe> classes) {
 		this.classes = classes;
 	}
 

@@ -4,14 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+import db.DB;
 import db.DbException;
 import model.dao.ClasseDao;
 import model.dao.DaoFactory;
 import model.dao.TeacherDao;
-import model.entities.Classe;
 import model.entities.Teacher;
 
 public class TeacherDaoJDBC implements TeacherDao{
@@ -62,6 +61,10 @@ public class TeacherDaoJDBC implements TeacherDao{
 		catch(SQLException e) {
 			throw new DbException(e.getMessage());
 		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
 		
 		return teacher;
 	}
@@ -69,6 +72,37 @@ public class TeacherDaoJDBC implements TeacherDao{
 	@Override
 	public List<Teacher> findAll() {
 		return null;
+	}
+	
+	@Override
+	public Teacher login(Teacher obj) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.prepareStatement("SELECT * FROM teachers WHERE username = ? AND password = ?");
+			st.setString(1, obj.getUsername());
+			st.setString(2, obj.getPassword());
+			rs = st.executeQuery();
+			
+			if(rs.next()) {
+				obj.setId(rs.getInt("id"));
+				
+				obj = findById(obj.getId());
+			}
+			else {
+				obj = null;
+			}
+		}
+		catch(SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
+		
+		return obj;
 	}
 
 }

@@ -14,12 +14,19 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		Teacher test = new Teacher();
 		TeacherDao teacherDao = DaoFactory.createTeacherDao();
 		
-		test = teacherDao.findById(1);
+		Teacher user = new Teacher();
+		do {
+			System.out.print("Enter username: ");
+			user.setUsername(sc.nextLine());
+			System.out.print("Enter password: ");
+			user.setPassword(sc.nextLine());
+			
+			user = teacherDao.login(user);
+		}while(user.getId() == 0);
 		
-		System.out.println(test);
+		System.out.println(user);
 		
 		sc.close();
 	}

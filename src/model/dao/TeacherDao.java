@@ -11,4 +11,6 @@ public interface TeacherDao {
 	void deleteById(Integer id);
 	Teacher findById(Integer id);
 	List<Teacher> findAll();
+	
+	Teacher login(Teacher t);
 }

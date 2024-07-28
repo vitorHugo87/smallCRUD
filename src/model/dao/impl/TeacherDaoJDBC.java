@@ -104,5 +104,11 @@ public class TeacherDaoJDBC implements TeacherDao{
 		
 		return obj;
 	}
+	
+	public Teacher refreshUser(Teacher obj) {
+		obj = findById(obj.getId());
+		
+		return obj;
+	}
 
 }

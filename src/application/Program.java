@@ -24,9 +24,16 @@ public class Program {
 			user.setPassword(sc.nextLine());
 			
 			user = teacherDao.login(user);
-		}while(user.getId() == 0);
+		} while(user.getId() == null || user.getId() == 0);
 		
-		System.out.println(user);
+		CMDManager cmdManager = new CMDManager();
+		
+		UI.showMenu(user);
+		
+		while(user.getId() != 0) {
+			cmdManager.getCMD(UI.place, sc, user);
+		}
+		
 		
 		sc.close();
 	}

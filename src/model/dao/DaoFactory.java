@@ -15,7 +15,7 @@ public class DaoFactory {
 		return new ClasseDaoJDBC(DB.getConnection());
 	}
 	
-	public static ActivityDao creatActivityDao() {
+	public static ActivityDao createActivityDao() {
 		return new ActivityDaoJDBC(DB.getConnection());
 	}
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.CMDManager;
 import db.DB;
 import db.DbException;
 import model.dao.ActivityDao;
@@ -22,7 +23,21 @@ public class ActivityDaoJDBC implements ActivityDao{
 
 	@Override
 	public void insert(Activity obj) {
+		PreparedStatement st = null;
 		
+		try {
+			st = conn.prepareStatement("INSERT INTO activities(name, classeId) VALUES (?, ?)");
+			st.setString(1, obj.getName());
+			st.setInt(2, obj.getClassId());
+			st.executeUpdate();
+		}
+		catch(SQLException e) {
+			System.out.println(CMDManager.classe);
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override

@@ -63,7 +63,7 @@ public class ClasseDaoJDBC implements ClasseDao{
 				classe.setName(rs.getString("name"));
 				classe.setTeacherId(rs.getInt("teacherId"));
 				
-				ActivityDao actDao =  DaoFactory.creatActivityDao();
+				ActivityDao actDao =  DaoFactory.createActivityDao();
 				
 				classe.setActivities(actDao.findByClasseId(classe.getId()));
 				

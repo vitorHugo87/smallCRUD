@@ -13,4 +13,5 @@ public interface TeacherDao {
 	List<Teacher> findAll();
 	
 	Teacher login(Teacher t);
+	Teacher refreshUser(Teacher t);
 }

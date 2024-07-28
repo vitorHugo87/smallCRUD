@@ -32,7 +32,6 @@ public class ActivityDaoJDBC implements ActivityDao{
 			st.executeUpdate();
 		}
 		catch(SQLException e) {
-			System.out.println(CMDManager.classe);
 			throw new DbException(e.getMessage());
 		}
 		finally {
@@ -42,7 +41,20 @@ public class ActivityDaoJDBC implements ActivityDao{
 
 	@Override
 	public void update(Activity obj) {
+		PreparedStatement st = null;
 		
+		try {
+			st = conn.prepareStatement("UPDATE activities SET name = ? WHERE id = ?");
+			st.setString(1, obj.getName());
+			st.setInt(2, obj.getId());
+			st.executeUpdate();
+		}
+		catch(SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override

@@ -46,6 +46,23 @@ public class CMDManager {
 				
 				UI.showClass(user, classe);
 			}
+			else if(cmd.equals("update")) {
+				System.out.print("Select Activity (1, 2, 3, etc..): ");
+				int activity = sc.nextInt();
+				if(activity < user.getClasses().get(classe - 1).getActivities().size() && activity > 0) {
+					Activity obj = user.getClasses().get(classe - 1).getActivities().get(activity - 1);
+					
+					System.out.print("New Name: ");
+					sc.nextLine();
+					String name = sc.nextLine();
+					obj.setName(name);
+					activityDao.update(obj);
+					
+					user = teacherDao.refreshUser(user);
+					
+					UI.showClass(user, classe);
+				}
+			}
 		}
 	}
 }
